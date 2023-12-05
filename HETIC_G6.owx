@@ -13,6 +13,7 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="bibo" IRI="http://purl.org/ontology/bibo/"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://xmlns.com/foaf/0.1/</Import>
     <Declaration>
         <Class IRI="#Cadre"/>
     </Declaration>
@@ -95,10 +96,13 @@
         <ObjectProperty IRI="#Consulter"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#acheter"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#est_personne_de_reference"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#est_subordonnée_de"/>
+        <ObjectProperty IRI="#utiliser"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#badge"/>
@@ -111,6 +115,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#bagde_MI123"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#batiment1"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#yanick"/>
@@ -146,6 +153,10 @@
     <SubClassOf>
         <Class IRI="#Excel"/>
         <Class IRI="#Numerique"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Machine"/>
+        <Class IRI="#Outil"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Machine_informatique"/>
@@ -209,16 +220,24 @@
         <NamedIndividual IRI="#yanick"/>
         <Literal></Literal>
     </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#acheter"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#Consulter"/>
         <Class IRI="#Document"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#acheter"/>
+        <Class IRI="#Produit"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#est_personne_de_reference"/>
         <Class IRI="#Employe"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#est_subordonnée_de"/>
+        <ObjectProperty IRI="#utiliser"/>
         <Class IRI="#Ouvrier"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -226,12 +245,16 @@
         <Class IRI="#Cadre"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#acheter"/>
+        <Class IRI="#Client"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#est_personne_de_reference"/>
         <Class IRI="#Outil"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#est_subordonnée_de"/>
-        <Class IRI="#Ouvrier"/>
+        <ObjectProperty IRI="#utiliser"/>
+        <Class IRI="#Machine"/>
     </ObjectPropertyRange>
     <DataPropertyDomain>
         <DataProperty IRI="#badge"/>
@@ -242,6 +265,10 @@
         <Class IRI="#Employe"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="#badge"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#identifiant"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -249,11 +276,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#est_personne_de_reference</IRI>
         <Literal>les employes de l&apos;entreprise ont tous acces ou outils</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#est_subordonnée_de</IRI>
-        <Literal>Tous les ouviers sont surbordonnées aujx cadre administratifs</Literal>
     </AnnotationAssertion>
 </Ontology>
 
